@@ -23,9 +23,10 @@ if(confirma){
 
 //Ejercicio con For
 
+let contador = prompt("Digite un numero entre 1 y 20 por favor.");
 let triangulo = "#";
 
-for(i=1;i<=7;i++){
+for(contador=1;contador<=20;contador++){
     console.log(triangulo);
     triangulo = triangulo + "#";
 }

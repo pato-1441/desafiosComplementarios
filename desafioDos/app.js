@@ -45,7 +45,7 @@ function realizarCambio(divisa,costo){
 
     let saldo = prompt('De cuanto es su saldo?\n(Su saldo debe ser mayor al costo de la divisa minimamente por un centavo)');
     if(saldo>costo){
-        alert('Usted compró: $'+(saldo/costo)+' '+divisa+'\nGracias por usar nuestro servicio!');
+        alert('Usted compró: $'+((saldo/costo).toFixed(2))+' '+divisa+'\nGracias por usar nuestro servicio!');
     } else {
         alert('Recuerde que su saldo debe ser mayor al costo de la divisa!');
     }

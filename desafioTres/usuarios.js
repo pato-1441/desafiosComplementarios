@@ -17,7 +17,7 @@ class User {
         this.mail = prompt('Ingrese su mail nuevo:');
         this.password = prompt('Ingrese su contraseña nueva:');
         this.birth = prompt('Ingrese su fecha de nacimiento nueva:');     
-        alert('Sus datos han sido modificados a: '+'\n'+this.name+'\n'+this.lname+'\n'+this.mail+'\n'+this.password+'\n'+this.birth);
+        alert('Sus datos han sido modificados a: '+'\n- '+this.name+'\n- '+this.lname+'\n- '+this.mail+'\n- '+this.password+'\n- '+this.birth);
     }
 }
 

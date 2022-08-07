@@ -20,13 +20,10 @@ class User {
         alert('Sus datos han sido modificados a: '+'\n- '+this.name+'\n- '+this.lname+'\n- '+this.mail+'\n- '+this.password+'\n- '+this.birth);
     }
 }
-
-const admin = new User('Patricio','Albornoz','admin@gmail.com','admin','16/05/04');
-const guille = new User('Guillermo','Albornoz','guille@gmail.com','guille','30/03/73');
-const silvi = new User('Silvina','Wagner','silvi@gmail.com','silvi','19/10/74');
-
-const users = [admin,guille,silvi]
-//               0     1      2
+const users = []
+users.push(new User('Patricio','Albornoz','admin@gmail.com','admin','16/05/04'));
+users.push(new User('Guillermo','Albornoz','guille@gmail.com','guille','30/03/73'));
+users.push(new User('Silvina','Wagner','silvi@gmail.com','silvi','19/10/74'));
 
 
 function addUser(){

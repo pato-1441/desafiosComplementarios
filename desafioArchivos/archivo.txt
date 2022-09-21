@@ -1,20 +1,14 @@
 [
   {
-    "id": "0",
-    "title": "Coca-Cola",
-    "price": "150",
+    "id": 1,
+    "title": "Corona",
+    "price": "375",
     "thumbnail": "empty"
   },
   {
-    "id": "1",
-    "title": "Pepsi",
-    "price": "170",
-    "thumbnail": "empty"
-  },
-  {
-    "id": "2",
-    "title": "Sprite",
-    "price": "200",
+    "id": 2,
+    "title": "Corona",
+    "price": "375",
     "thumbnail": "empty"
   }
 ]

@@ -1,21 +1,12 @@
-const express = require('express');
-
-const {Router} = express;
-
+const express = require('express')
 const app = express();
 const PORT = 8080;
-
-const router = Router();
-
-router.get('/',(req,res)=>{
-    res.send('Este es nuestro home.')
-});
-
-router.post('/',(req,res)=>{
-    console.log('Probando el postt');
-    res.send('Todo ok manito')
-});
-
-app.use('/',router);
-
 const server = app.listen(PORT,()=>console.log(`Servidor escuchando en puerto: ${PORT}`));
+server.on('error',(err)=>console.log(`Error: ${err}`));
+app.use(express.json());
+
+const routerMascotas = require('./routes/mascotas.js');
+const routerPersonas = require('./routes/personas.js');
+
+app.use('/mascotas',routerMascotas);
+//app.use('/personas',routerPersonas);

@@ -7,6 +7,8 @@ const server = app.listen(PORT, () =>
 );
 server.on("error", (err) => console.log(`Error: ${err}`));
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(express.static('public'));
 
 const { Router } = express;
 const router = Router();
@@ -39,7 +41,8 @@ router.get("/productos/:id", async (req, res) => {
 });
 
 router.post("/productos", async (req, res) => {
-  const producto = req.body;
+  const {title,price,image} = req.body;
+  const producto = {title:title,price:price,image:image};
   await productos.save(producto);
   const allProducts = await productos.getAll();
   const lastProduct = allProducts[allProducts.length - 1];

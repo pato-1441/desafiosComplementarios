@@ -34,5 +34,11 @@
     "title": "Heineken",
     "price": "850",
     "thumbnail": "empty"
+  },
+  {
+    "id": 7,
+    "title": "Fanta",
+    "price": "490",
+    "image": "empty"
   }
 ]

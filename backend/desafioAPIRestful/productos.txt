@@ -12,12 +12,6 @@
     "thumbnail": "empty"
   },
   {
-    "id": 3,
-    "title": "Pepsi",
-    "price": "255",
-    "thumbnail": "empty"
-  },
-  {
     "id": 4,
     "title": "Seven-Up",
     "price": "325",
@@ -33,6 +27,12 @@
     "id": 6,
     "title": "Guarana",
     "price": "425",
+    "thumbnail": "empty"
+  },
+  {
+    "id": 7,
+    "title": "Mirinda",
+    "price": "565",
     "thumbnail": "empty"
   }
 ]

@@ -1,38 +1,38 @@
 [
   {
     "id": 1,
-    "title": "Sprite",
-    "price": "200",
-    "thumbnail": "empty"
-  },
-  {
-    "id": 2,
     "title": "Coca-Cola",
     "price": "275",
     "thumbnail": "empty"
   },
   {
-    "id": 4,
+    "id": 2,
     "title": "Seven-Up",
     "price": "325",
     "thumbnail": "empty"
   },
   {
-    "id": 5,
+    "id": 3,
     "title": "Corona",
     "price": "650",
     "thumbnail": "empty"
   },
   {
-    "id": 6,
+    "id": 4,
     "title": "Guarana",
     "price": "425",
     "thumbnail": "empty"
   },
   {
-    "id": 7,
+    "id": 5,
     "title": "Mirinda",
     "price": "565",
+    "thumbnail": "empty"
+  },
+  {
+    "id": 6,
+    "title": "Heineken",
+    "price": "850",
     "thumbnail": "empty"
   }
 ]

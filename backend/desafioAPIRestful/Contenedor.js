@@ -57,7 +57,8 @@ class Contenedor{
             const matchIndex = productos.findIndex(producto => producto.id == id)
             if(matchIndex=== -1)
                 throw new Error("Id not found")
-            console.log("🚀 ~ file: class.js ~ line 52 ~ Contenedor ~ deleteById ~ matchIndex", matchIndex)
+            //console.log("-Line 60 ~ Contenedor ~ deleteById ~ matchIndex")
+            console.log("Producto Eliminado con exito. (Contenedor.js - Linea 61)")
             productos.splice(matchIndex, 1)
             await fs.promises.writeFile(this.nombreArchivo,JSON.stringify((productos),null,2),'utf-8');
         } catch (error) {

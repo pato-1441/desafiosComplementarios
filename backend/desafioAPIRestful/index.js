@@ -1,7 +1,7 @@
 const fs = require('fs');
 const express = require("express");
 const app = express();
-const PORT = 3030;
+const PORT = 8080;
 const server = app.listen(PORT, () =>
   console.log(`Servidor escuchando en puerto: ${PORT}`)
 );
@@ -13,10 +13,6 @@ const router = Router();
 
 const Contenedor = require("./Contenedor");
 const productos = new Contenedor("./productos.txt");
-
-router.get("/", (req, res) => {
-  res.send(`Se encuentra en direccion localhost/${PORT}/api`);
-});
 
 router.get("/productos", async (req, res) => {
   await productos
@@ -47,41 +43,32 @@ router.post("/productos", async (req, res) => {
   await productos.save(producto);
   const allProducts = await productos.getAll();
   const lastProduct = allProducts[allProducts.length - 1];
-  res.status(200).send(lastProduct);
+  res.status(200).json(lastProduct);
 });
 
 
 router.put("/productos/:id", async (req, res) => {
   const allProducts = await productos.getAll();
-  //console.log(allProducts)
+
   const id = parseInt(req.params.id);
-
   const foundProduct = allProducts.find(prod=>prod.id===id);
-  //console.log(foundProduct)
-  
-  const receivedProduct = req.body;
 
+  const receivedProduct = req.body;
   let modifiedProduct = { id: id, ...receivedProduct };
 
   const replacedProducts = allProducts.map(prod=>prod.id===id ? modifiedProduct : prod)
   
-  res.status(200).send(replacedProducts);
+  res.status(200).json(replacedProducts);
   await fs.promises.writeFile('productos.txt',JSON.stringify((replacedProducts),null,2),'utf-8');
   console.log(`Escritura realizada con éxito.`);
 
 });
 
 router.delete('/productos/:id', async (req,res) => {
-
-    const allProducts = await productos.getAll();
-
     const id = parseInt(req.params.id);
+    await productos.deleteById(id);
 
-    const modifiedProducts = allProducts.filter(prod=>prod.id !== id)
-
-    await fs.promises.writeFile('productos.txt',JSON.stringify((modifiedProducts),null,2),'utf-8');
-    res.status(200).send(`Producto eliminado con exito.`);
-
+    res.status(200).json(`Producto eliminado con exito.`);
 })
 
 app.use("/api", router);

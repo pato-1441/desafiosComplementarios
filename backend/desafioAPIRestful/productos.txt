@@ -40,5 +40,10 @@
     "title": "Fanta",
     "price": "490",
     "image": "empty"
+  },
+  {
+    "id": 8,
+    "title": "Mate",
+    "price": "1000"
   }
 ]

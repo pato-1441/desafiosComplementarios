@@ -43,8 +43,10 @@ class ContainerMemory {
   }
 
   deleteById(id) {
-    const products = this.elements.filter((element) => element.id !== parseInt(id))
-    this.elements = products
+    const products = this.elements.filter(
+      (element) => element.id !== parseInt(id)
+    );
+    this.elements = products;
     return { success: true };
   }
 }

@@ -32,20 +32,24 @@ productRouter.post("/", (req, res) => {
   res.send({ success: true, data: { id: product.id } });
 });
 
-productRouter.put("/:id",(req,res)=>{
-    const { id } = req.params;
-    const { title, price, thumbnail } = req.body;
+productRouter.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const { title, price, thumbnail } = req.body;
 
-    const updatedProduct = ProductMemory.updateById(id, { title, price, thumbnail });
+  const updatedProduct = ProductMemory.updateById(id, {
+    title,
+    price,
+    thumbnail,
+  });
 
-    res.send({ success: true, data: { updated: updatedProduct } });
-})
+  res.send({ success: true, data: { updated: updatedProduct } });
+});
 
-productRouter.delete("/:id",(req,res)=>{
-    const { id } = req.params;
+productRouter.delete("/:id", (req, res) => {
+  const { id } = req.params;
 
-    const products = ProductMemory.deleteById(id);
-    res.send({ success: true, data: products });
-})
+  const products = ProductMemory.deleteById(id);
+  res.send({ success: true, data: products });
+});
 
 export { productRouter };

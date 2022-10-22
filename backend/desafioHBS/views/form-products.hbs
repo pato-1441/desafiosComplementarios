@@ -1,27 +1,31 @@
-<div class="mt-5">
-  <form action="/productos" method="post">
+<div class="mt-5 text-center flex flex-col items-center">
+  <form action="/productos" method="post" class="gap-3">
     <input
       type="text"
       name="title"
-      placeholder="Title"
-      class="input input-bordered w-full max-w-xs"
+      placeholder="Titulo"
+      class="input input-bordered w-full"
       required
     />
     <input
       type="number"
       name="price"
-      placeholder="Price"
-      class="input input-bordered w-full max-w-xs"
+      placeholder="Precio"
+      class="input input-bordered w-full mt-3"
       required
     />
     <input
       type="text"
       name="thumbnail"
-      placeholder="Thumbnail"
-      class="input input-bordered w-full max-w-xs"
+      placeholder="Thumbnail URL"
+      class="input input-bordered w-full mt-3"
       required
     />
-    <button type="submit" value="Enviar!" class="btn btn-accent">Enviar</button>
+    <button
+      type="submit"
+      value="Enviar!"
+      class="btn btn-accent mt-3"
+    >Enviar</button>
   </form>
   <button class="btn"><a href="/productos">Ir a productos</a></button>
 </div>

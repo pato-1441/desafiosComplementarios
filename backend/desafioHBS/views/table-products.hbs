@@ -1,37 +1,30 @@
-<div>
-    <h1 class="title">Lista de productos</h1>
-
-    <table class="product-list">
+<div class="mt-5 flex flex-col">
+  <h2 class="text-xl">Lista de productos</h2>
+  <div class="overflow-x-auto mt-5">
+    <table class="table table-zebra w-full">
+      <thead>
         <tr>
-            <th>Título</th>
-            <th>Precio</th>
-            <th>Miniatura</th>
+          <th></th>
+          <th>Título</th>
+          <th>Precio</th>
+          <th>Miniatura</th>
         </tr>
+      </thead>
+      <tbody>
         {{#if productos.length}}
-        {{#each productos}}
-        <tr>
-            <td>{{this.title}}</td>
-            <td>{{this.price}}</td>
-            <td><img height="72px" width="72px" src={{this.thumbnail}} /></td>
-        </tr>
-        {{/each}}
+          {{#each productos}}
+            <tr>
+              <th></th>
+              <td>{{this.title}}</td>
+              <td>${{this.price}}</td>
+              <td><img height="72px" width="72px" src={{this.thumbnail}} /></td>
+            </tr>
+          {{/each}}
         {{/if}}
+      </tbody>
     </table>
+  </div>
 
-    <a href="/"><button>Volver al formulario de carga</button></a>
+  <button class="btn mt-5"><a href="/">Volver al formulario de carga</a></button>
 
 </div>
-
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid;
-    }
-    .title {
-        text-align: center;
-    }
-    .product-list {
-        width: 100%;
-    }
-</style>

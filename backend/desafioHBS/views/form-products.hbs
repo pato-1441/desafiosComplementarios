@@ -1,7 +1,27 @@
-<form action="/productos" method="post">
-  <input type="text" name="title" placeholder="Title" required />
-  <input type="number" name="price" placeholder="Price" required />
-  <input type="text" name="thumbnail" placeholder="Thumbnail" required />
-  <input type="submit" value="Enviar!" />
-</form>
-<button><a href="/productos">Ir a productos</a></button>
+<div class="mt-5">
+  <form action="/productos" method="post">
+    <input
+      type="text"
+      name="title"
+      placeholder="Title"
+      class="input input-bordered w-full max-w-xs"
+      required
+    />
+    <input
+      type="number"
+      name="price"
+      placeholder="Price"
+      class="input input-bordered w-full max-w-xs"
+      required
+    />
+    <input
+      type="text"
+      name="thumbnail"
+      placeholder="Thumbnail"
+      class="input input-bordered w-full max-w-xs"
+      required
+    />
+    <button type="submit" value="Enviar!" class="btn btn-accent">Enviar</button>
+  </form>
+  <button class="btn"><a href="/productos">Ir a productos</a></button>
+</div>

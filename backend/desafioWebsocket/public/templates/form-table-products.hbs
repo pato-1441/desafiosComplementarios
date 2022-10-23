@@ -1,0 +1,59 @@
+<div class="mt-5 text-center flex flex-col items-center">
+  <form action="/productos" method="post" class="gap-3">
+    <input
+      type="text"
+      name="title"
+      placeholder="Titulo"
+      class="input input-bordered w-full"
+      required
+    />
+    <input
+      type="number"
+      name="price"
+      placeholder="Precio"
+      class="input input-bordered w-full mt-3"
+      required
+    />
+    <input
+      type="text"
+      name="thumbnail"
+      placeholder="Thumbnail URL"
+      class="input input-bordered w-full mt-3"
+      required
+    />
+    <button
+      type="submit"
+      value="Enviar!"
+      class="btn btn-accent mt-3"
+    >Enviar</button>
+  </form>
+</div>
+
+<div class="mt-5 flex flex-col">
+  <h2 class="text-xl">Lista de productos</h2>
+  <div class="overflow-x-auto mt-5">
+    <table class="table table-zebra w-full">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Título</th>
+          <th>Precio</th>
+          <th>Miniatura</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if productos.length}}
+          {{#each productos}}
+            <tr>
+              <th></th>
+              <td>{{this.title}}</td>
+              <td>${{this.price}}</td>
+              <td><img height="72px" width="72px" src={{this.thumbnail}} /></td>
+            </tr>
+          {{/each}}
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+  {{! <button class="btn mt-5"><a href="/">Volver al formulario de carga</a></button> }}
+</div>

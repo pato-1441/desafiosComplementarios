@@ -1,0 +1,31 @@
+<div class="mt-5 text-center flex flex-col items-center">
+  <form action="/productos" method="post" class="gap-3">
+    <input
+      type="text"
+      name="title"
+      placeholder="Titulo"
+      class="input input-bordered w-full"
+      required
+    />
+    <input
+      type="number"
+      name="price"
+      placeholder="Precio"
+      class="input input-bordered w-full mt-3"
+      required
+    />
+    <input
+      type="text"
+      name="thumbnail"
+      placeholder="Thumbnail URL"
+      class="input input-bordered w-full mt-3"
+      required
+    />
+    <button
+      type="submit"
+      value="Enviar!"
+      class="btn btn-accent mt-3"
+    >Enviar</button>
+  </form>
+  <button class="btn"><a href="/productos">Ir a productos</a></button>
+</div>

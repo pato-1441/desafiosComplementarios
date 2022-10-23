@@ -2,6 +2,8 @@ import express from "express";
 import { productRouter } from "./routers/ProductRouter.js";
 import { ViewsRouter } from "./routers/ViewsRouter.js";
 import handlebars from "express-handlebars";
+import {Server as HttpServer} from 'http';
+import {Server as IOServer} from 'socket.io';
 
 const PORT = 8080;
 const app = express();

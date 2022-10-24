@@ -18,47 +18,47 @@ const PORT = 8080;
 app.use(express.static("./public"));
 
 httpServer.listen(PORT, () =>
-    console.log(`Servidor escuchando en puerto: ${PORT}`)
+  console.log(`Servidor escuchando en puerto: ${PORT}`)
 );
 
 io.on("connection", (socket) => {
-    bringAllProducts(socket);
-    bringAllMessages(socket);
+  bringAllProducts(socket);
+  bringAllMessages(socket);
 
-    socket.on("new product", (newProduct) => {
-        saveProduct(newProduct);
-    });
+  socket.on("new product", (newProduct) => {
+    saveProduct(newProduct);
+  });
 
-    socket.on("new message", (message) => {
-        saveMessage(message);
-    });
+  socket.on("new message", (message) => {
+    saveMessage(message);
+  });
 });
 
 // PRODUCTOS
 
 const bringAllProducts = async (socket) => {
-    const allProduct = await Product.getAll();
-    socket.emit("all products", allProduct);
+  const allProduct = await Product.getAll();
+  socket.emit("all products", allProduct);
 };
 
 const saveProduct = async (newProduct) => {
-    await Product.save(newProduct);
-    const allProduct = await Product.getAll();
-    io.sockets.emit("all products", allProduct);
+  await Product.save(newProduct);
+  const allProduct = await Product.getAll();
+  io.sockets.emit("all products", allProduct);
 };
 
 // MENSAJES
 
 const saveMessage = async (message) => {
-    const date = new Date();
-    const dateFormated = dayjs(date).format("DD/MM/YYYY hh:mm:ss");
-    const newMessage = { ...message, createdAt: `${dateFormated} hs` };
-    await Message.save(newMessage);
-    const allMessage = await Message.getAll();
-    io.sockets.emit("all messages", allMessage);
+  const date = new Date();
+  const dateFormated = dayjs(date).format("DD/MM/YYYY hh:mm:ss");
+  const newMessage = { ...message, createdAt: `${dateFormated} hs` };
+  await Message.save(newMessage);
+  const allMessage = await Message.getAll();
+  io.sockets.emit("all messages", allMessage);
 };
 
 const bringAllMessages = async (socket) => {
-    const allMessage = await Message.getAll();
-    socket.emit("all messages", allMessage);
+  const allMessage = await Message.getAll();
+  socket.emit("all messages", allMessage);
 };

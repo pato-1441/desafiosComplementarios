@@ -1,5 +1,5 @@
-const Container = require('../../models/container')
+const Container = require("../../models/container");
 
-const Products = new Container('Products')
+const Products = new Container("Products");
 
-module.exports = Products
+module.exports = Products;

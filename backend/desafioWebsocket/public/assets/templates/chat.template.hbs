@@ -1,11 +1,24 @@
-<h2 id="chat__title">Chat</h2>
 <div id="chat_dashboard">
-    {{#if messages.length}}
-        {{#each messages}}
+  <div class="max-w-2xl border rounded bg-gray-100">
+    <div>
+      <div class="w-full">
+        <div class="relative w-full p-6 overflow-y-auto h-[40rem]">
+          <ul class="space-y-2">
             <div class="chat">
-                <p>{{this.message}}</p>
-                <p>{{this.createdAt}}</p>
+              {{#if messages.length}}
+                {{#each messages}}
+                  <li class="flex justify-end px-1 py-2">
+                    <div class="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow-lg bg-white">
+                      <span class="block">{{this.message}}</span>
+                      <p class="text-gray-400">{{this.createdAt}}</p>
+                    </div>
+                  </li>
+                {{/each}}
+              {{/if}}
             </div>
-        {{/each}}
-    {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

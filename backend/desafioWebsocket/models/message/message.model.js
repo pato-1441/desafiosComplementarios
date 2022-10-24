@@ -1,5 +1,5 @@
-const Container = require('../../models/container')
+const Container = require("../../models/container");
 
-const Messages = new Container('Messages')
+const Messages = new Container("Messages");
 
-module.exports = Messages
+module.exports = Messages;

@@ -1,14 +1,20 @@
 [
   {
     "title": "Mate Stanley",
-    "price": "12312",
+    "price": "123123",
     "thumbnail": "https://cdn.shopify.com/s/files/1/0574/2211/9062/products/termo-classic-verde-946-ml-mate-stanley-termos-513.jpg",
     "id": 1
   },
   {
     "title": "Mate Stanley",
-    "price": "123132",
+    "price": "123",
     "thumbnail": "https://cdn.shopify.com/s/files/1/0574/2211/9062/products/termo-classic-verde-946-ml-mate-stanley-termos-513.jpg",
     "id": 2
+  },
+  {
+    "title": "Yerba Rosamonte 1kg",
+    "price": "12312",
+    "thumbnail": "asdasd",
+    "id": 3
   }
 ]

@@ -3,8 +3,8 @@ const socket = io("http://localhost:8080");
 const productForm = document.getElementById("product-form");
 const productsContainer = document.getElementById("products");
 
-const chatForm = document.getElementById('chats');
-const chatContainer = document.getElementById('chatsContainer');
+const chatForm = document.getElementById("chats");
+const chatContainer = document.getElementById("chatsContainer");
 
 productForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ productForm.addEventListener("submit", (e) => {
     socket.emit("new product", formValues);
 });
 
-socket.on("all products", dato => {
+socket.on("all products", (dato) => {
     compilerHBSProducts(dato);
 });
 
@@ -31,12 +31,12 @@ const compilerHBSProducts = async (products) => {
 chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(chatForm);
-    const formValues = Object.fromEntries(formData);    
+    const formValues = Object.fromEntries(formData);
     chatForm.reset();
     socket.emit("new message", formValues);
 });
 
-socket.on("all messages", allMessage => {
+socket.on("all messages", (allMessage) => {
     compilerHBSMessages(allMessage);
 });
 

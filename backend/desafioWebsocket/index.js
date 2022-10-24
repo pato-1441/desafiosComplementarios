@@ -1,6 +1,10 @@
 const express = require("express");
 const { Server: HttpServer } = require("http");
 const { Server: SocketIOServer } = require("socket.io");
+const dayjs = require("dayjs");
+const customParseFormat = require("dayjs/plugin/customParseFormat");
+
+dayjs.extend(customParseFormat);
 
 const Product = require("./models/product/product.model");
 const Message = require("./models/message/message.model");
@@ -25,16 +29,17 @@ io.on("connection", (socket) => {
         saveProduct(newProduct);
     });
 
-    socket.on("new message", (message)=>{
+    socket.on("new message", (message) => {
         saveMessage(message);
-    })
+    });
 });
+
+// PRODUCTOS
 
 const bringAllProducts = async (socket) => {
     const allProduct = await Product.getAll();
     socket.emit("all products", allProduct);
 };
-
 
 const saveProduct = async (newProduct) => {
     await Product.save(newProduct);
@@ -42,7 +47,12 @@ const saveProduct = async (newProduct) => {
     io.sockets.emit("all products", allProduct);
 };
 
-const saveMessage = async (newMessage) => {
+// MENSAJES
+
+const saveMessage = async (message) => {
+    const date = new Date();
+    const dateFormated = dayjs(date).format("DD/MM/YYYY hh:mm:ss");
+    const newMessage = { ...message, createdAt: `${dateFormated} hs` };
     await Message.save(newMessage);
     const allMessage = await Message.getAll();
     io.sockets.emit("all messages", allMessage);

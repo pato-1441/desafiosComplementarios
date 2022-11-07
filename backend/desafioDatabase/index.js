@@ -4,16 +4,11 @@ const { Server: SocketIOServer } = require("socket.io");
 const dayjs = require("dayjs");
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 
-const knexOptions = {
-  client: "mysql",
-  connection: {
-    host: "127.0.0.1",
-    user: "root",
-    password: "",
-    database: "desafiodb",
-  },
-};
-const knex = require("knex")(knexOptions);
+const {createMessagesTable} = require("./utils/index.js")
+const {createProductsTable} = require("./utils/index.js")
+
+createMessagesTable();
+createProductsTable();
 
 dayjs.extend(customParseFormat);
 

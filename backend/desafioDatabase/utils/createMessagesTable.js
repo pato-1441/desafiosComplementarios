@@ -17,7 +17,7 @@ const createMessagesTable = () => {
   }).then((result) => {
     console.log('Table: "messages", created successfully.');
   }).catch((err) => {
-    console.log(`ERROR: ${err.sqlMessage}`);
+    console.log(`ERROR: ${err.sqlMessage}.`);
   });
 }
 

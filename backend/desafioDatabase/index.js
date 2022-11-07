@@ -14,7 +14,6 @@ dayjs.extend(customParseFormat);
 
 const Product = require("./models/product/product.model");
 const Message = require("./models/message/message.model");
-const { table } = require("console");
 
 const app = express();
 const httpServer = new HttpServer(app);

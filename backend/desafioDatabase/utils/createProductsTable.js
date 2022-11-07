@@ -18,7 +18,7 @@ const createProductsTable = () => {
   }).then((result) => {
     console.log('Table: "products", created successfully.');
   }).catch((err) => {
-    console.log(`ERROR: ${err.sqlMessage}`);
+    console.log(`ERROR: ${err.sqlMessage}.`);
   });
 }
 

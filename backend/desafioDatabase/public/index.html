@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="./assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.33.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Desafio Web Socket</title>
+  </head>
+  <body class="container mx-auto text-white">
+    <div class="mt-5 text-center flex flex-col items-center">
+      <form action="/productos" method="post" class="gap-3" id="product-form">
+        <input type="text" name="title" placeholder="Titulo" class="input input-bordered w-full" required />
+        <input type="number" name="price" placeholder="Precio" class="input input-bordered w-full mt-3" required />
+        <input type="text" name="thumbnail" placeholder="Thumbnail URL" class="input input-bordered w-full mt-3" required />
+        <button type="submit" value="Enviar!" class="btn btn-accent mt-3"> Enviar </button>
+      </form>
+    </div>
+    <div id="products"></div>
+    <h2 class="text-xl mt-5">Chat</h2>
+    <form id="chats">
+      <input type="text" name="message" class="text-black p-2 mr-2 bg-white input input-bordered" placeholder="Ingrese aquí su mensaje"/>
+      <button type="submit" value="Enviar!" class="btn btn-primary mt-3"> Enviar mensaje </button>
+    </form>
+    <div id="chatsContainer" class="my-5"></div>
+  </body>
+</html>

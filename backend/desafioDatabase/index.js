@@ -1,70 +1,31 @@
+// init project
 const express = require("express");
-const { Server: HttpServer } = require("http");
-const { Server: SocketIOServer } = require("socket.io");
-const dayjs = require("dayjs");
-const customParseFormat = require("dayjs/plugin/customParseFormat");
-
-const {createMessagesTable} = require("./utils/index.js")
-const {createProductsTable} = require("./utils/index.js")
-
-createMessagesTable();
-createProductsTable();
-
-dayjs.extend(customParseFormat);
-
-const Product = require("./models/product/product.model");
-const Message = require("./models/message/message.model");
-
+const { initServer, emit } = require("./socket");
+const http = require("http");
+const bodyParser = require("body-parser");
+const path = require("path");
 const app = express();
-const httpServer = new HttpServer(app);
-const io = new SocketIOServer(httpServer);
 
-const PORT = 8080;
+const PORT = process.env.PORT;
 
-app.use(express.static("./public"));
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "static")));
 
-httpServer.listen(PORT, () =>
-  console.log(`Servidor escuchando en puerto: ${PORT}`)
-);
-
-io.on("connection", (socket) => {
-  bringAllProducts(socket);
-  bringAllMessages(socket);
-
-  socket.on("new product", (newProduct) => {
-    saveProduct(newProduct);
-  });
-
-  socket.on("new message", (message) => {
-    saveMessage(message);
-  });
+app.use((error, req, res, next) => {
+  if (error.statusCode) {
+    return res.status(error.statusCode).send(`Error ${error.statusCode}`);
+  }
+  console.log(error);
+  res.status(500).json({ error: "Somethings brokes..." });
 });
 
-// PRODUCTOS
+// listen for requests :)
 
-const bringAllProducts = async (socket) => {
-  const allProduct = await Product.getAll();
-  socket.emit("all products", allProduct);
-};
+const server = http.createServer(app);
+initServer(server);
 
-const saveProduct = async (newProduct) => {
-  await Product.save(newProduct);
-  const allProduct = await Product.getAll();
-  io.sockets.emit("all products", allProduct);
-};
-
-// MENSAJES
-
-const saveMessage = async (message) => {
-  const date = new Date();
-  const dateFormated = dayjs(date).format("DD/MM/YYYY hh:mm:ss");
-  const newMessage = { ...message, createdAt: `${dateFormated} hs` };
-  await Message.save(newMessage);
-  const allMessage = await Message.getAll();
-  io.sockets.emit("all messages", allMessage);
-};
-
-const bringAllMessages = async (socket) => {
-  const allMessage = await Message.getAll();
-  socket.emit("all messages", allMessage);
-};
+server.listen(PORT, () => {
+  console.log("Your app is listening on port " + PORT);
+  console.log("Environment: " + process.env.NODE_ENV);
+});

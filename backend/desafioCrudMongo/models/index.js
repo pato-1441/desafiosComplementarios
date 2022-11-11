@@ -1,4 +1,4 @@
-import messages from "./messages.js";
-import products from "./products.js";
+import { messages } from "./messages.js";
+import { products } from "./products.js";
 
-export default { messages, products };
+export { messages, products };

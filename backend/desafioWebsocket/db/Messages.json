@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "message": "asdasd",
+    "createdAt": "08/11/2022 09:43:42 hs",
+    "id": 1
+  },
+  {
+    "message": "asd",
+    "createdAt": "08/11/2022 09:43:49 hs",
+    "id": 2
+  },
+  {
+    "message": "probando chat holaaa",
+    "createdAt": "08/11/2022 09:43:50 hs",
+    "id": 3
+  }
+]

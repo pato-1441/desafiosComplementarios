@@ -109,13 +109,18 @@ const script = async () => {
 
     console.log("------------------------------------");
     console.log("5.c) Hacer una actualización sobre todos los productos, agregando el campo stock a todos ellos con un valor de 100.");
-    const puntoC = await products.updateMany({},{$set:{stock:100}},{multi:true})
+    const puntoC = await products.updateMany({},{$set:{stock:100}})
     console.log(puntoC);
 
     console.log("------------------------------------");
     console.log("5.d) Cambiar el stock a cero de los productos con precios mayores a 4000 pesos.");
-    const puntoD = await products.updateMany({price:{$gt:4000}},{$set:{stock:0}},{multi:true})
+    const puntoD = await products.updateMany({price:{$gt:4000}},{$set:{stock:0}})
     console.log(puntoD);
+
+    console.log("------------------------------------");
+    console.log("5.e) Borrar los productos con precio menor a 1000 pesos ");
+    const puntoE = await products.deleteMany({price:{$lt:1000}})
+    console.log(puntoE);
 
   } catch (error) {
     console.log(error);

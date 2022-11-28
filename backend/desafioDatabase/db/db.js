@@ -1,5 +1,5 @@
-const knex = require("knex")
-const { mariadbOptions, sqliteOptions } = require("./dbConnection")
+import knex from "knex";
+import { mariadbOptions, sqliteOptions } from "./dbConnection.js";
 
 class DB {
     constructor(options, table){
@@ -98,7 +98,7 @@ class Mensajes extends DB {
     }
 }
 
-module.exports = {
+export {
     Productos,
     Mensajes
 }

@@ -20,7 +20,7 @@ const mariadbOptions = {
     }
 }
 
-module.exports = {
+export {
     sqliteOptions,
     mariadbOptions
 }

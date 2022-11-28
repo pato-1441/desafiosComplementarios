@@ -1,16 +1,21 @@
 // init project
-const express = require("express");
-const { initServer, emit } = require("./socket");
-const http = require("http");
-const bodyParser = require("body-parser");
-const path = require("path");
+import express from "express";
+import {initServer, emit} from "./socket.js";
+import http from "http";
+import bodyParser from "body-parser";
+import path from "path";
+import router from "./routes/products.js"
 const app = express();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "static")));
+app.use(express.static("./static"))
+app.set("views", "./views")
+app.set("view engine", "pug")
+
+app.use('/api', router)
 
 app.use((error, req, res, next) => {
   if (error.statusCode) {

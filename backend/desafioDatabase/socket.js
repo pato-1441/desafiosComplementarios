@@ -1,5 +1,5 @@
-const {Server} = require("socket.io");
-const {Productos, Mensajes} = require("./db/db")
+import {Server} from "socket.io"
+import {Productos, Mensajes} from "./db/db.js"
 
 let io;
 
@@ -49,7 +49,7 @@ const emit = (action, data) => {
     io.emit(action, data)
 }
 
-module.exports = {
+export {
     initServer,
     emit
 }

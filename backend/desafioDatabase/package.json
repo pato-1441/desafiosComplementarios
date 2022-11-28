@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "start": "node -r dotenv/config index.js",
         "dev": "node -r dotenv/config index.js",
@@ -19,6 +20,7 @@
     },
     "license": "ISC",
     "devDependencies": {
+        "@faker-js/faker": "^7.6.0",
         "dotenv": "^16.0.3",
         "nodemon": "^2.0.20"
     }

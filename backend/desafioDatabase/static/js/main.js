@@ -24,7 +24,15 @@
   messageForm.addEventListener("submit", (e) => {
     e.preventDefault();
     socket.emit("message", {
-      message: messageInput.value,
+      author: {
+        id: Math.trunc(Math.random()*100000).toString(),
+        nombre:messageInputName.value,
+        apellido:messageInputLastName.value,
+        edad: messageInputAge.value,
+        alias: messageInputAlias.value,
+        avatar: 'https://xsgames.co/randomusers/avatar.php?g=male'
+      },
+      text: messageInput.value,
     });
   });
 

@@ -16,7 +16,7 @@
     <title>Desafio Web Socket</title>
   </head>
   <body>
-    <main class="container mx-auto text-white">
+    <main class="container mx-auto text-white h-min-screen">
       <section class="mt-5 text-center flex flex-col items-center">
         <form action="" id="enviarProducto" class="gap-3">
           <input
@@ -64,10 +64,10 @@
           </table>
         </div>
       </section>
-      <h2 class="text-xl mt-5">Chat</h2>
       <section>
+        <h2 class="text-xl mt-5">Chat</h2>
         <form
-          class="d-flex flex-row flex-wrap justify-content-evenly text-black"
+          class="flex flex-row justify-content items-center"
           id="enviarMensaje"
           action="#"
         >
@@ -111,9 +111,9 @@
             name="message"
             id="messageInput"
           />
-          <input class="btn btn-primary mt-3" type="submit" value="Enviar" />
+          <input class="btn btn-primary" type="submit" value="Enviar" />
         </form>
-        <div class="output-message">
+        <div class="output-message my-10">
           <div class="max-w-2xl border rounded bg-gray-200">
             <div>
               <div class="w-full">
@@ -121,7 +121,7 @@
                   <ul class="space-y-2">
                     <div class="chat">
                       <li class="flex justify-end px-1 py-2">
-                        <div id="messageOutput"></div>
+                        <div id="messageOutput" class="flex flex-col gap-2"></div>
                       </li>
                     </div>
                   </ul>

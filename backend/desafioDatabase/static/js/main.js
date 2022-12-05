@@ -89,7 +89,6 @@
         const template = Handlebars.compile(text);
         messages.forEach((el) => {
           const div = document.createElement("div");
-          div.classList.add("relative", "max-w-xl", "px-4", "py-2", "text-gray-700", "rounded", "shadow-lg", "bg-white");
           div.innerHTML = template(el);
           messageOutput.appendChild(div);
         });

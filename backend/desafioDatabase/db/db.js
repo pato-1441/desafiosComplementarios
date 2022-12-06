@@ -7,12 +7,12 @@ class DB {
     this.schema = schema;
   }
 
-  async conseguirData() {
+  async getData() {
     try {
       return await this.schema.find({});
     } catch (error) {
       console.log(
-        "Hubo un error al conseguir la data de la tabla " +
+        "An error has occurred fetching the data from the table." +
           this.schema +
           "\n" +
           error
@@ -21,26 +21,26 @@ class DB {
     }
   }
 
-  async añadirData(data) {
+  async addData(data) {
     try {
       const result = await this.schema(data).save();
       return result;
     } catch (error) {
       console.log(
-        "Hubo un error al añadir la data de la coleccion " +
+        "An error has occurred adding data to the collection." +
           this.schema +
           "\n" +
           error
       );
-      throw Error("error");
+      throw Error("Error");
     }
   }
 }
 
-class Mensajes extends DB {
+class Messages extends DB {
   constructor() {
     super(
-      mongoose.model("mensajes", {
+      mongoose.model("messages", {
         author: {
           id: { type: String, required: true },
           nombre: { type: String, required: true },
@@ -54,19 +54,19 @@ class Mensajes extends DB {
     );
   }
 
-  async agregarMensaje(mensaje) {
-    await super.añadirData(mensaje);
+  async addMessage(mensaje) {
+    await super.addData(mensaje);
   }
 
-  async leerMensajes() {
-    return await super.conseguirData();
+  async readMessages() {
+    return await super.getData();
   }
 }
 
-class Productos extends DB {
+class Products extends DB {
   constructor() {
     super(
-      mongoose.model("productos", {
+      mongoose.model("products", {
         nombre: { type: String, required: true },
         precio: { type: Number, required: true },
         url: { type: String, required: true },
@@ -74,13 +74,13 @@ class Productos extends DB {
     );
   }
 
-  async agregarProducto(producto) {
-    await super.añadirData(producto);
+  async addProduct(product) {
+    await super.addData(product);
   }
 
-  async leerProductos() {
-    return await super.conseguirData();
+  async readProducts() {
+    return await super.getData();
   }
 }
 
-export { Productos, Mensajes };
+export { Products, Messages };

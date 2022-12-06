@@ -13,7 +13,7 @@ const setEvents = (io) => {
   const MensajesDB = new Mensajes();
 
   io.on("connection", async (socketClient) => {
-    console.log("Se ha conectado un nuevo cliente, id: " + socketClient.id);
+    console.log("A new client with the ID: ", socketClient.id, " has connected." );
 
     console.log(await ProductosDB.leerProductos());
     if ((await ProductosDB.leerProductos().length) !== 0) {
@@ -26,7 +26,7 @@ const setEvents = (io) => {
     }
 
     socketClient.on("disconnection", () => {
-      console.log("Se ha desconectado el cliente con la id " + socketClient.id);
+      console.log("The client with the ID: ", socketClient.id, " has disconnected.");
     });
 
     socketClient.on("product", async (data) => {

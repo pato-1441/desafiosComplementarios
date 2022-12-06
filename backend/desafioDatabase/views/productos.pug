@@ -6,9 +6,9 @@ block content
             table(class="table table-hover align-middle text-center")
                 thead 
                     tr 
-                        th Nombre
-                        th Precio
-                        th Imagen
+                        th Name
+                        th Price
+                        th Picture
                 tbody
                     each item in productos
                         tr
@@ -16,4 +16,4 @@ block content
                             td(class="col-3")=item.precio
                             td(class="col-3")
                                 if item.url
-                                    img(class="img-fluid" src=item.url alt=item.nombre)
+                                    img(class="img-fluid w-50" src=item.url alt=item.nombre)

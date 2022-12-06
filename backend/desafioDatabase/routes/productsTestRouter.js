@@ -8,12 +8,12 @@ const productsTestRouter = Router();
 
 productsTestRouter.get("/products-test/", (req, res, next) => {
   try {
-    let data = { productos: [] };
+    let data = { products: [] };
 
     for (let i = 0; i < 5; i++) {
-      data.productos.push({
-        nombre: commerce.product(),
-        precio: commerce.price(),
+      data.products.push({
+        name: commerce.product(),
+        price: commerce.price(),
         url: image.technics(),
       });
     }

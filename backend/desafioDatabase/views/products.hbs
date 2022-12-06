@@ -1,0 +1,18 @@
+<table class="mx-auto table table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Picture</th>
+    </tr>
+  </thead>
+  <tbody>    
+    {{#each products}}
+      <tr class="">
+        <td>{{name}}</td>
+        <td>{{price}}</td>
+        <td class="w-50"><img class="img-fluid w-75" src={{url}} alt={{name}}-picture></td>
+      </tr>
+    {{/each}}    
+  </tbody>
+</table>

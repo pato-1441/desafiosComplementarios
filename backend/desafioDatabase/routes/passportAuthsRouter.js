@@ -1,6 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
-import Authenticated from "../middlewares/authenticate";
+import Authenticated from "../middlewares/authenticate.js"
 
 const passportAuthsRouter = Router();
 

@@ -16,6 +16,7 @@
         "express": "^4.18.2",
         "express-handlebars": "^6.0.6",
         "express-session": "^1.17.3",
+        "hbs": "^4.2.0",
         "mongoose": "^6.7.4",
         "normalizr": "^3.6.2",
         "passport": "^0.6.0",

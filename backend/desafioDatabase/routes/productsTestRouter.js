@@ -1,27 +1,27 @@
-import { Router } from 'express';
-import { faker } from '@faker-js/faker';
+import { Router } from "express";
+import { faker } from "@faker-js/faker";
 
-faker.locale = 'es';
+faker.locale = "es";
 const { commerce, image } = faker;
 
 const productsTestRouter = Router();
 
-productsTestRouter.get('/products-test/', (req, res, next) => {
-      try {
-            let data = {productos: []};
+productsTestRouter.get("/products-test/", (req, res, next) => {
+  try {
+    let data = { productos: [] };
 
-            for (let i = 0; i < 5; i++) {
-                  data.productos.push({
-                        nombre: commerce.product(),
-                        precio: commerce.price(),
-                        url: image.technics(),
-                  });
-            }
-            console.log(data);
-            res.render("productos", data);
-      } catch (error) {
-            next(error);
-      }
+    for (let i = 0; i < 5; i++) {
+      data.productos.push({
+        nombre: commerce.product(),
+        precio: commerce.price(),
+        url: image.technics(),
+      });
+    }
+    console.log(data);
+    res.render("productos", data);
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default productsTestRouter;

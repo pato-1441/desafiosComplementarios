@@ -6,21 +6,25 @@ const passportAuthsRouter = Router();
 
 // get
 
-passportAuthsRouter.get("/failregister", (req, res) => {
-  res.render("register-error", {});
+passportAuthsRouter.get("/signup-error", (req, res) => {
+  res.render("signup-error", {});
 });
-passportAuthsRouter.get("/faillogin", (req, res) => {
+passportAuthsRouter.get("/login-error", (req, res) => {
   res.render("login-error", {});
 });
 
-passportAuthsRouter.get("/register", (req, res) => {
-  res.render("register");
+passportAuthsRouter.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
 passportAuthsRouter.get("/logout", (req, res) => {
+  req.logout((err)=>{
+    if(err){return err}
+    res.render('logout', {username})
+  })
   const { username } = req.user;
-  req.logout();
-  res.render("logout", { username });
+  /* req.logout();
+  res.render("logout", { username }); */
 });
 
 passportAuthsRouter.get("/login", Authenticated, (req, res) => {
@@ -34,15 +38,15 @@ passportAuthsRouter.get("/", Authenticated, (req, res) => {
 
 passportAuthsRouter.post(
   "/login",
-  passport.authenticate("login", { failureRedirect: "/faillogin" }),
+  passport.authenticate("login", { failureRedirect: "/login-error" }),
   (req, res) => {
     res.redirect("/");
   }
 );
 
 passportAuthsRouter.post(
-  "/register",
-  passport.authenticate("register", { failureRedirect: "/failregister" }),
+  "/signup",
+  passport.authenticate("signup", { failureRedirect: "/signup-error" }),
   (req, res) => {
     res.redirect("/");
   }

@@ -6,15 +6,14 @@ import MongoStore from "connect-mongo";
 import handlebars from "express-handlebars";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import passportAuthsRouter from "./routes/passportAuthsRouter.js"
+import passportAuthsRouter from "./routes/passportAuthsRouter.js";
 import productsTestRouter from "./routes/productsTestRouter.js";
 import { User } from "./models/user.js";
 import * as strategy from "./passport/strategy.js";
 
-import { initServer, emit } from "./socket.js";
+import { initServer } from "./socket.js";
 import http from "http";
 import bodyParser from "body-parser";
-import path from "path";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -35,13 +34,10 @@ app.use(
     },
   })
 );
-/* app.engine(
+app.engine(
   "hbs",
-  handlebars({
-    extname: ".hbs",
-    defaultLayout: "main.hbs",
-  })
-); */
+  handlebars.engine({ extname: ".hbs", defaultLayout: "main.hbs" })
+);
 app.set("view engine", "hbs");
 app.set("views", "./views");
 app.use(express.static("./static"));
@@ -51,8 +47,26 @@ app.use(passport.session());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', passportAuthsRouter)
+app.use("/", passportAuthsRouter);
 app.use("/api", productsTestRouter);
+
+passport.use(
+  "login",
+  new LocalStrategy({ passReqToCallback: true }, strategy.login)
+);
+
+passport.use(
+  "signup",
+  new LocalStrategy({ passReqToCallback: true }, strategy.signup)
+);
+
+passport.serializeUser((user, done) => {
+  done(null, user._id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => done(err, user));
+});
 
 app.use((error, req, res, next) => {
   if (error.statusCode) {

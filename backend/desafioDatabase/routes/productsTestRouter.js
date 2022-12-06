@@ -18,7 +18,7 @@ productsTestRouter.get("/products-test/", (req, res, next) => {
       });
     }
     console.log(data);
-    res.render("productos", data);
+    res.render("products", data);
   } catch (error) {
     next(error);
   }

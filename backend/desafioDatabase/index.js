@@ -2,7 +2,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import session from "express-session";
-import MongoStore from "connect-mongo"
+import MongoStore from "connect-mongo";
 import handlebars from "express-handlebars";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
@@ -34,12 +34,19 @@ app.use(
     },
   })
 );
-app.set("view engine", "pug");
+app.engine(
+  "hbs",
+  handlebars({
+    extname: ".hbs",
+    defaultLayout: "main.hbs",
+  })
+);
+app.set("view engine", "hbs");
 app.set("views", "./views");
 app.use(express.static("./static"));
 app.use(express.urlencoded({ extended: true }));
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

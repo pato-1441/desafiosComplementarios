@@ -6,7 +6,7 @@ const { commerce, image } = faker;
 
 const router = Router();
 
-router.get('/productos-test/', (req, res, next) => {
+router.get('/products-test/', (req, res, next) => {
       try {
             let data = {productos: []};
 

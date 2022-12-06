@@ -4,9 +4,9 @@ import { faker } from '@faker-js/faker';
 faker.locale = 'es';
 const { commerce, image } = faker;
 
-const router = Router();
+const productsTestRouter = Router();
 
-router.get('/products-test/', (req, res, next) => {
+productsTestRouter.get('/products-test/', (req, res, next) => {
       try {
             let data = {productos: []};
 
@@ -24,4 +24,4 @@ router.get('/products-test/', (req, res, next) => {
       }
 });
 
-export default router;
+export default productsTestRouter;

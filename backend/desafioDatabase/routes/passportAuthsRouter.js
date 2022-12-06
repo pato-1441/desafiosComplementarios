@@ -18,11 +18,11 @@ passportAuthsRouter.get("/signup", (req, res) => {
 });
 
 passportAuthsRouter.get("/logout", (req, res) => {
+  const { username } = req.user;
   req.logout((err)=>{
     if(err){return err}
     res.render('logout', {username})
-  })
-  const { username } = req.user;
+  })  
   /* req.logout();
   res.render("logout", { username }); */
 });

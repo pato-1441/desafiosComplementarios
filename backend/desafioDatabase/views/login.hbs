@@ -1,29 +1,37 @@
 <div class="mt-5 flex justify-center">
   <div class="w-1/4">
     <h1 class="text-3xl mb-5 text-white">Log In</h1>
-    <form class="w-full" action="/login" method="post" role="form" autocomplete="off">
-      <div class="flex flex-col gap-2">
-        <input
-          id="nombre"
-          name="username"
-          placeholder="name"
-          class="input input-bordered w-full"
-          type="text"
-          required
-        />
-        <input
-          id="password"
-          name="password"
-          placeholder="password"
-          class="input input-bordered w-full"
-          type="password"
-          required
-        />
-      </div>
+    <form
+      class="w-full flex flex-col gap-3"
+      action="/login"
+      method="post"
+      role="form"
+      autocomplete="off"
+    >
+      <input
+        id="nombre"
+        name="username"
+        placeholder="name"
+        class="input input-bordered w-full"
+        type="text"
+        required
+      />
+      <input
+        id="password"
+        name="password"
+        placeholder="password"
+        class="input input-bordered w-full"
+        type="password"
+        required
+      />
+      <input class="btn btn-secondary" type="submit" value="Login" />
     </form>
-    <div class="flex gap-2 mt-5 w-full">
-        <input class="btn btn-secondary w-1/2" type="submit" value="Login" />
-        <input class="btn btn-primary w-1/2" onclick="location.href = '/signup'" value="Sign Up">
-      </div>
+    <div class="w-full">
+      <input
+        class="btn btn-primary w-full"
+        onclick="location.href = '/signup'"
+        value="Sign Up"
+      />
+    </div>
   </div>
 </div>

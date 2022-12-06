@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import { Productos, Mensajes } from "./db/db.js";
+import { Products, Messages } from "./db/db.js";
 
 let io;
 
@@ -9,34 +9,42 @@ const initServer = (httpServer) => {
 };
 
 const setEvents = (io) => {
-  const ProductosDB = new Productos();
-  const MensajesDB = new Mensajes();
+  const ProductsDB = new Products();
+  const MessagesDB = new Messages();
 
   io.on("connection", async (socketClient) => {
-    console.log("A new client with the ID: ", socketClient.id, " has connected." );
+    console.log(
+      "A new client with the ID: ",
+      socketClient.id,
+      " has connected."
+    );
 
-    console.log(await ProductosDB.leerProductos());
-    if ((await ProductosDB.leerProductos().length) !== 0) {
-      emit("product-history", await ProductosDB.leerProductos());
+    console.log(await ProductsDB.readProducts());
+    if ((await ProductsDB.readProducts().length) !== 0) {
+      emit("product-history", await ProductsDB.readProducts());
     }
 
-    console.log(await MensajesDB.leerMensajes());
-    if ((await MensajesDB.leerMensajes().length) !== 0) {
-      emit("message-history", await MensajesDB.leerMensajes());
+    console.log(await MessagesDB.readMessages());
+    if ((await MessagesDB.readMessages().length) !== 0) {
+      emit("message-history", await MessagesDB.readMessages());
     }
 
     socketClient.on("disconnection", () => {
-      console.log("The client with the ID: ", socketClient.id, " has disconnected.");
+      console.log(
+        "The client with the ID: ",
+        socketClient.id,
+        " has disconnected."
+      );
     });
 
     socketClient.on("product", async (data) => {
-      await ProductosDB.agregarProducto(data);
-      emit("product", await ProductosDB.leerProductos());
+      await ProductsDB.addProduct(data);
+      emit("product", await ProductsDB.readProducts());
     });
 
     socketClient.on("message", async (data) => {
-      await MensajesDB.agregarMensaje(data);
-      emit("message", await MensajesDB.leerMensajes());
+      await MessagesDB.addMessage(data);
+      emit("message", await MessagesDB.readMessages());
     });
   });
 };

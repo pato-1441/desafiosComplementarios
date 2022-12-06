@@ -15,8 +15,8 @@
   productForm.onsubmit = (e) => {
     e.preventDefault();
     socket.emit("product", {
-      nombre: productNameInput.value,
-      precio: productPriceInput.value,
+      name: productNameInput.value,
+      price: productPriceInput.value,
       url: productUrlInput.value,
     });
   };
@@ -26,9 +26,9 @@
     socket.emit("message", {
       author: {
         id: Math.trunc(Math.random()*100000).toString(),
-        nombre:messageInputName.value,
-        apellido:messageInputLastName.value,
-        edad: messageInputAge.value,
+        name:messageInputName.value,
+        surname:messageInputLastName.value,
+        age: messageInputAge.value,
         alias: messageInputAlias.value,
         avatar: 'https://xsgames.co/randomusers/avatar.php?g=male'
       },

@@ -34,13 +34,13 @@ app.use(
     },
   })
 );
-app.engine(
+/* app.engine(
   "hbs",
   handlebars({
     extname: ".hbs",
     defaultLayout: "main.hbs",
   })
-);
+); */
 app.set("view engine", "hbs");
 app.set("views", "./views");
 app.use(express.static("./static"));
